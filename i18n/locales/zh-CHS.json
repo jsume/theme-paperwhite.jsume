@@ -1,0 +1,40 @@
+{
+  "common": {
+    "now": "现在",
+    "ongoing": "进行中",
+    "showMore": "显示更多",
+    "showLess": "收起"
+  },
+  "jsume": {
+    "basics": {
+      "title": "基础信息"
+    },
+    "about": {
+      "title": "关于"
+    },
+    "work": {
+      "title": "工作经历"
+    },
+    "projects": {
+      "title": "项目经历"
+    },
+    "publications": {
+      "title": "发表作品"
+    },
+    "education": {
+      "title": "教育背景"
+    },
+    "certificates": {
+      "title": "证书"
+    },
+    "awards": {
+      "title": "获奖情况"
+    },
+    "skills": {
+      "title": "技能"
+    },
+    "languages": {
+      "title": "语言"
+    }
+  }
+}

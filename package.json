@@ -1,0 +1,41 @@
+{
+  "name": "theme-paperwhite.jsume",
+  "type": "module",
+  "private": true,
+  "packageManager": "pnpm@10.17.1",
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "dev:host": "nuxt dev --host",
+    "lint": "eslint",
+    "lint:fix": "eslint --fix",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "catalog:",
+    "@iconify-json/material-symbols": "catalog:",
+    "@iconify-json/mdi": "catalog:",
+    "@jsume/schemas": "catalog:",
+    "@nuxt/eslint": "catalog:",
+    "@nuxt/fonts": "catalog:",
+    "@nuxt/icon": "catalog:",
+    "@nuxtjs/i18n": "catalog:",
+    "@pinia/nuxt": "catalog:",
+    "@types/node": "catalog:",
+    "@unocss/eslint-plugin": "catalog:",
+    "@unocss/nuxt": "catalog:",
+    "@unocss/reset": "catalog:",
+    "@vueuse/core": "catalog:",
+    "@vueuse/nuxt": "catalog:",
+    "eslint": "catalog:",
+    "nuxt": "catalog:",
+    "pinia": "catalog:",
+    "typescript": "catalog:",
+    "unocss": "catalog:",
+    "vue": "catalog:",
+    "vue-router": "catalog:",
+    "zod": "catalog:"
+  }
+}

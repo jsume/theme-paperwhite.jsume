@@ -1,0 +1,40 @@
+{
+  "common": {
+    "now": "Now",
+    "ongoing": "Ongoing",
+    "showMore": "show more",
+    "showLess": "show less"
+  },
+  "jsume": {
+    "basics": {
+      "title": "Basics"
+    },
+    "about": {
+      "title": "About"
+    },
+    "work": {
+      "title": "Work"
+    },
+    "projects": {
+      "title": "Projects"
+    },
+    "publications": {
+      "title": "Publications"
+    },
+    "education": {
+      "title": "Education"
+    },
+    "certificates": {
+      "title": "Certificates"
+    },
+    "awards": {
+      "title": "Awards"
+    },
+    "skills": {
+      "title": "Skills"
+    },
+    "languages": {
+      "title": "Languages"
+    }
+  }
+}

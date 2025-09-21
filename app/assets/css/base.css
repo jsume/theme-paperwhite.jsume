@@ -1,0 +1,15 @@
+:root {
+  @apply text-base;
+}
+
+a {
+  @apply transform cursor-pointer origin-bottom transition-all duration-400 ease-in-out sm:hover:scale-105;
+}
+
+.section-item-header-info {
+  @apply flex flex-nowrap gap-col-3 items-center lt-sm:(flex-wrap gap-col-2 gap-row-0);
+}
+
+.icon-text {
+  @apply flex gap-[0.2em] items-center;
+}
