@@ -1,5 +1,6 @@
 catalog:
   '@antfu/eslint-config': ^5.4.1
+  '@formkit/auto-animate': ^0.9.0
   '@iconify-json/material-symbols': ^1.2.39
   '@iconify-json/mdi': ^1.2.3
   '@jsume/schemas': ^0.0.6
@@ -11,12 +12,10 @@ catalog:
   '@types/node': ^24.5.2
   '@unocss/eslint-plugin': ^66.5.2
   '@unocss/nuxt': 66.5.2
-  '@unocss/preset-web-fonts': ^66.5.2
   '@unocss/reset': ^66.5.2
   '@vueuse/core': ^13.9.0
   '@vueuse/nuxt': ^13.9.0
   eslint: ^9.36.0
-  geasty: ^0.0.1
   nuxt: ^4.1.2
   pinia: ^3.0.3
   typescript: ^5.9.2

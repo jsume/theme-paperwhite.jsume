@@ -4,44 +4,36 @@ const {
   availableJsumeDataCount,
 } = storeToRefs(useMainStore())
 const { locales } = useI18n()
-
-const isHidden = ref(true)
+const router = useRouter()
 
 const availableLocales = computed(() => locales.value.filter(lc => availableLocaleCodes.value.includes(lc.code)))
-
-// handlers
-function handleMouseEnter() {
-  isHidden.value = false
-}
-function handleMouseLeave() {
-  isHidden.value = true
-}
 </script>
 
 <template>
   <div
     v-if="availableJsumeDataCount > 1"
-    class="right-5 top-5 fixed"
-    @mouseenter="handleMouseEnter"
-    @mouseleave="handleMouseLeave"
-    @click="isHidden = !isHidden"
+    class="relative"
   >
-    <div class="px-2 pb-2 cursor-pointer">
-      <!-- <div i-material-symbols:translate class="cursor-pointer" /> -->
+    <div class="menu-icon" @click="handleClick">
       <Icon name="material-symbols:translate" />
     </div>
-    <div
-      v-show="!isHidden"
-      class="text-sm border rounded-md bg-white min-w-24 right-2 top-6 absolute overflow-hidden"
+    <select
+      class="opacity-0 size-6 cursor-pointer left-0 top-0 absolute overflow-hidden"
+      @change="(e) => router.push($switchLocalePath(e.target.value) || '/')"
     >
-      <NuxtLink
+      <option
         v-for="lc in availableLocales"
         :key="lc.code"
-        :to="$switchLocalePath(lc.code)"
-        class="px-2 py-1 w-24 block hover:bg-neutral-100"
+        class="text-xs"
+        :value="lc.code"
+        :selected="lc.code === $i18n.locale"
       >
         {{ lc.name }}
-      </NuxtLink>
-    </div>
+      </option>
+    </select>
   </div>
 </template>
+
+<style scoped>
+
+</style>

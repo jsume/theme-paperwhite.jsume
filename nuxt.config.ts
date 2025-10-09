@@ -2,7 +2,16 @@
 import { generateGistUrl } from './shared/utils/'
 
 export default defineNuxtConfig({
-  modules: ['@nuxt/eslint', '@unocss/nuxt', '@pinia/nuxt', '@vueuse/nuxt', '@nuxtjs/i18n', '@nuxt/icon', '@nuxt/fonts'],
+  modules: [
+    '@nuxt/eslint',
+    '@nuxt/fonts',
+    '@nuxt/icon',
+    '@nuxtjs/i18n',
+    '@formkit/auto-animate/nuxt',
+    '@pinia/nuxt',
+    '@unocss/nuxt',
+    '@vueuse/nuxt',
+  ],
   components: [
     { path: '~/components', pathPrefix: false },
   ],

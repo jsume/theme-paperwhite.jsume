@@ -1,5 +1,11 @@
+/* variables */
+:root {
+  --base-font-size: 16px;
+}
+
 :root {
   @apply text-base;
+  font-size: var(--base-font-size);
 }
 
 a {

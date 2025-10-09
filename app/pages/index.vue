@@ -18,7 +18,7 @@ const sections = [
     <div class="py-8 max-w-screen-lg md:px-8 sm:px-6 lt-sm:pt-0">
       <SectionIs v-for="section in sections" :key="section" :name="section" />
     </div>
-    <LangSelector class="right-5 top-5 fixed" />
+    <Menu class="right-10 top-10 fixed lt-sm:(right-5 top-5)" />
   </div>
 </template>
 

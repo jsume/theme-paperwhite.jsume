@@ -2,7 +2,7 @@
   "name": "theme-paperwhite.jsume",
   "type": "module",
   "private": true,
-  "packageManager": "pnpm@10.17.1",
+  "packageManager": "pnpm@10.18.0",
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",
@@ -15,6 +15,7 @@
   },
   "devDependencies": {
     "@antfu/eslint-config": "catalog:",
+    "@formkit/auto-animate": "catalog:",
     "@iconify-json/material-symbols": "catalog:",
     "@iconify-json/mdi": "catalog:",
     "@jsume/schemas": "catalog:",
