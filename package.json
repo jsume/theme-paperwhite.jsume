@@ -2,7 +2,7 @@
   "name": "theme-paperwhite.jsume",
   "type": "module",
   "private": true,
-  "packageManager": "pnpm@10.18.0",
+  "packageManager": "pnpm@10.18.1",
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",
@@ -11,7 +11,8 @@
     "lint:fix": "eslint --fix",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "prepare": "simple-git-hooks"
   },
   "devDependencies": {
     "@antfu/eslint-config": "catalog:",
@@ -31,12 +32,20 @@
     "@vueuse/core": "catalog:",
     "@vueuse/nuxt": "catalog:",
     "eslint": "catalog:",
+    "lint-staged": "catalog:",
     "nuxt": "catalog:",
     "pinia": "catalog:",
+    "simple-git-hooks": "catalog:",
     "typescript": "catalog:",
     "unocss": "catalog:",
     "vue": "catalog:",
     "vue-router": "catalog:",
     "zod": "catalog:"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "npx lint-staged"
+  },
+  "lint-staged": {
+    "*": "eslint --fix"
   }
 }
