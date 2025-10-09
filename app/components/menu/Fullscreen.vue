@@ -4,7 +4,7 @@ const { isFullscreen, isSupported, toggle } = useFullscreen()
 
 <template>
   <div v-if="isSupported" class="menu-icon" @click="toggle">
-    <Icon v-if="isFullscreen" name="material-symbols:fullscreen-exit-rounded" />
-    <Icon v-else name="material-symbols:fullscreen-rounded" />
+    <Icon v-show="isFullscreen" name="material-symbols:fullscreen-exit-rounded" />
+    <Icon v-show="!isFullscreen" name="material-symbols:fullscreen-rounded" />
   </div>
 </template>
