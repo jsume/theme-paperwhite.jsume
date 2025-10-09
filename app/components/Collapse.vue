@@ -13,7 +13,6 @@ const isCollapsed = ref(!props.notCollapse)
     class="icon-text text-xs text-neutral-400/70 font-bold mt-1 underline underline-offset-2 underline-dotted cursor-pointer"
     @click="isCollapsed = !isCollapsed"
   >
-    <template v-if="isCollapsed">{{ $t('common.showMore') }}<Icon name="material-symbols:arrow-downward-rounded" /></template>
-    <template v-else>{{ $t('common.showLess') }}<Icon name="material-symbols:arrow-upward-rounded" /></template>
+    {{ isCollapsed ? $t('common.showMore') : $t('common.showLess') }}<Icon v-show="isCollapsed" name="material-symbols:arrow-downward-rounded" /><Icon v-show="!isCollapsed" name="material-symbols:arrow-upward-rounded" />
   </span>
 </template>
