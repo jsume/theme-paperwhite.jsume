@@ -1,6 +1,5 @@
 catalog:
   '@antfu/eslint-config': ^5.4.1
-  '@formkit/auto-animate': ^0.9.0
   '@iconify-json/material-symbols': ^1.2.40
   '@iconify-json/mdi': ^1.2.3
   '@jsume/schemas': ^0.0.6

@@ -7,7 +7,6 @@ export default defineNuxtConfig({
     '@nuxt/fonts',
     '@nuxt/icon',
     '@nuxtjs/i18n',
-    '@formkit/auto-animate/nuxt',
     '@pinia/nuxt',
     '@unocss/nuxt',
     '@vueuse/nuxt',

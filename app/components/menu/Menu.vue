@@ -1,30 +1,22 @@
 <script setup lang="ts">
 const isHidden = ref(true)
-
-const target = useTemplateRef('target')
-
-onClickOutside(target, () => isHidden.value = true)
-
-onMounted(() => {
-  autoAnimate(document.querySelector('.menu-box')!)
-})
 </script>
 
 <template>
   <div
-    ref="target"
-    v-auto-animate
-    class="flex shrink-0 flex-col gap-3"
+    class="group flex shrink-0 flex-col gap-3"
+    @mouseenter="isHidden = false"
+    @mouseleave="isHidden = true"
   >
-    <div
-      class="menu-box shrink-0 size-8 cursor-pointer"
+    <button
+      class="rounded-4 flex shrink-0 flex-col size-8 items-center justify-center group-hover:(color-white bg-black)"
       @click="isHidden = !isHidden"
     >
-      <Icon name="mdi:apps" class="color-white" />
-    </div>
+      <Icon name="mdi:apps" />
+    </button>
     <div
       v-if="!isHidden"
-      class="menu-box p-1 gap-3 w-8"
+      class="p-1 rounded-4 bg-black flex flex-col gap-3 w-8 items-center justify-center"
     >
       <Fullscreen />
       <Zoom />
@@ -34,11 +26,7 @@ onMounted(() => {
 </template>
 
 <style>
-.menu-box {
-  @apply rounded-4 bg-black flex flex-col items-center justify-center drop-shadow-md/40;
-}
-
 .menu-icon {
-  @apply color-white bg-neutral-400/30 rounded-3 size-6 flex flex-col items-center justify-center text-sm cursor-pointer;
+  @apply color-white bg-neutral-400/30 rounded-3 size-6 flex flex-col items-center justify-center text-sm;
 }
 </style>
