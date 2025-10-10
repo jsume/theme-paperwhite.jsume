@@ -6,6 +6,7 @@
 :root {
   @apply text-base;
   font-size: var(--base-font-size);
+  scroll-behavior: smooth;
 }
 
 a {

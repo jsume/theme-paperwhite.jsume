@@ -19,6 +19,7 @@ const sections = [
       <SectionIs v-for="section in sections" :key="section" :name="section" />
     </div>
     <Menu class="right-10 top-10 fixed lt-sm:(right-5 top-5)" />
+    <BackToTop />
   </div>
 </template>
 
