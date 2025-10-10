@@ -14,9 +14,9 @@ const availableLocales = computed(() => locales.value.filter(lc => availableLoca
     v-if="availableJsumeDataCount > 1"
     class="relative"
   >
-    <div class="menu-icon" @click="handleClick">
+    <button class="menu-icon" @click="handleClick">
       <Icon name="material-symbols:translate" />
-    </div>
+    </button>
     <select
       class="opacity-0 size-6 cursor-pointer left-0 top-0 absolute overflow-hidden"
       @change="(e) => router.push($switchLocalePath(e.target.value) || '/')"
@@ -33,7 +33,3 @@ const availableLocales = computed(() => locales.value.filter(lc => availableLoca
     </select>
   </div>
 </template>
-
-<style scoped>
-
-</style>

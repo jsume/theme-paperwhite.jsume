@@ -31,9 +31,9 @@ onMounted(() => {
 
 <template>
   <div class="menu-icon">
-    <Icon name="mdi:plus" @click="() => zoom(1)" />
-    <Icon name="mdi:refresh" @click="() => zoom(0)" />
-    <Icon name="mdi:minus" @click="() => zoom(-1)" />
+    <Icon class="cursor-pointer" name="mdi:plus" @click="() => zoom(1)" />
+    <Icon class="cursor-pointer" name="mdi:refresh" @click="() => zoom(0)" />
+    <Icon class="cursor-pointer" name="mdi:minus" @click="() => zoom(-1)" />
   </div>
 </template>
 
