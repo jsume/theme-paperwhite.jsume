@@ -13,28 +13,28 @@
       "title": "關於"
     },
     "work": {
-      "title": "工作經驗"
+      "title": "工作經歷"
     },
     "projects": {
-      "title": "項目經驗"
+      "title": "專案經歷"
     },
     "publications": {
       "title": "發表作品"
     },
     "education": {
-      "title": "教育背景"
+      "title": "學歷"
     },
     "certificates": {
       "title": "證書"
     },
     "awards": {
-      "title": "獲獎情況"
+      "title": "獲獎紀錄"
     },
     "skills": {
       "title": "技能"
     },
     "languages": {
-      "title": "語言"
+      "title": "語言能力"
     }
   }
 }

@@ -1,5 +1,5 @@
 /* eslint-disable node/prefer-global/process */
-import { generateGistUrl } from './shared/utils/'
+import { getGistUrl } from './shared/utils/'
 
 export default defineNuxtConfig({
   modules: [
@@ -40,9 +40,12 @@ export default defineNuxtConfig({
   ],
   runtimeConfig: {
     public: {
-      jsumeDataEnUrl: generateGistUrl(process.env.NUXT_PUBLIC_GIST_USERNAME, process.env.NUXT_PUBLIC_GIST_ID, 'en.jsume.json'),
-      jsumeDataZhCHSUrl: generateGistUrl(process.env.NUXT_PUBLIC_GIST_USERNAME, process.env.NUXT_PUBLIC_GIST_ID, 'zh-CHS.jsume.json'),
-      jsumeDataZhCHTUrl: generateGistUrl(process.env.NUXT_PUBLIC_GIST_USERNAME, process.env.NUXT_PUBLIC_GIST_ID, 'zh-CHT.jsume.json'),
+      // list of jsume data gist urls for nuxt runtime ctx
+      jsumeDataEnUSUrl: getGistUrl('en-US.jsume.json'),
+      jsumeDataJaJPUrl: getGistUrl('ja-JP.jsume.json'),
+      jsumeDataZhCNUrl: getGistUrl('zh-CN.jsume.json'),
+      jsumeDataZhHKUrl: getGistUrl('zh-HK.jsume.json'),
+      jsumeDataZhTWUrl: getGistUrl('zh-TW.jsume.json'),
     },
   },
   compatibilityDate: '2025-07-15',
@@ -64,12 +67,15 @@ export default defineNuxtConfig({
       { name: 'Noto Sans ST', provider: 'google' },
     ],
   },
+  // https://simplelocalize.io/data/locales/
   i18n: {
-    defaultLocale: process.env.NUXT_PUBLIC_DEFAULT_LOCALE || 'en',
+    defaultLocale: process.env.NUXT_PUBLIC_DEFAULT_LOCALE || 'en-US',
     locales: [
-      { code: 'en', name: 'English', file: 'en.json' },
-      { code: 'zh-CHS', name: '简体中文', file: 'zh-CHS.json' },
-      { code: 'zh-CHT', name: '繁體中文', file: 'zh-CHT.json' },
+      { code: 'en-US', name: 'English', file: 'en-US.json' },
+      { code: 'ja-JP', name: '日本語', file: 'ja-JP.json' },
+      { code: 'zh-CN', name: '简体中文', file: 'zh-CN.json' },
+      { code: 'zh-HK', name: '繁體中文(HK)', file: 'zh-HK.json' },
+      { code: 'zh-TW', name: '繁體中文(TW)', file: 'zh-TW.json' },
     ],
   },
 })

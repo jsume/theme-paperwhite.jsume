@@ -3,16 +3,20 @@ import { jsumeSchema } from '@jsume/schemas'
 
 export const useMainStore = defineStore('main', () => {
   // states
-  const jsumeEnData = ref<Jsume>()
-  const jsumeZhCHSData = ref<Jsume>()
-  const jsumeZhCHTData = ref<Jsume>()
+  const jsumeEnUSData = ref<Jsume>()
+  const jsumeJaJPData = ref<Jsume>()
+  const jsumeZhCNData = ref<Jsume>()
+  const jsumeZhHKData = ref<Jsume>()
+  const jsumeZhTWData = ref<Jsume>()
   const jsumeData = ref<Jsume>()
 
   // getters
   const localeCodeToJsumeData = {
-    'en': jsumeEnData,
-    'zh-CHS': jsumeZhCHSData,
-    'zh-CHT': jsumeZhCHTData,
+    'en-US': jsumeEnUSData,
+    'ja-JP': jsumeJaJPData,
+    'zh-CN': jsumeZhCNData,
+    'zh-HK': jsumeZhHKData,
+    'zh-TW': jsumeZhTWData,
   }
   const availableJsumeDataCount = computed(() => Object.values(localeCodeToJsumeData).filter(d => d.value).length)
   const availableLocaleCodes = computed(() => Object.entries(localeCodeToJsumeData).filter(([_, d]) => d.value).map(([code, _]) => code))
@@ -30,14 +34,20 @@ export const useMainStore = defineStore('main', () => {
   // actions
   function setJsumeDataByLocale(localeCode: LocaleCodeType) {
     switch (localeCode) {
-      case 'en':
-        jsumeData.value = jsumeEnData.value
+      case 'en-US':
+        jsumeData.value = jsumeEnUSData.value
         break
-      case 'zh-CHS':
-        jsumeData.value = jsumeZhCHSData.value
+      case 'ja-JP':
+        jsumeData.value = jsumeJaJPData.value
         break
-      case 'zh-CHT':
-        jsumeData.value = jsumeZhCHTData.value
+      case 'zh-CN':
+        jsumeData.value = jsumeZhCNData.value
+        break
+      case 'zh-HK':
+        jsumeData.value = jsumeZhHKData.value
+        break
+      case 'zh-TW':
+        jsumeData.value = jsumeZhTWData.value
         break
       default:
         break
@@ -47,9 +57,11 @@ export const useMainStore = defineStore('main', () => {
   async function getJsumeData() {
     const config = useRuntimeConfig()
     const urls = {
-      en: config.public.jsumeDataEnUrl,
-      zhCHS: config.public.jsumeDataZhCHSUrl,
-      zhCHT: config.public.jsumeDataZhCHTUrl,
+      enUS: config.public.jsumeDataEnUSUrl,
+      jaJP: config.public.jsumeDataJaJPUrl,
+      zhCN: config.public.jsumeDataZhCNUrl,
+      zhHK: config.public.jsumeDataZhHKUrl,
+      zhTW: config.public.jsumeDataZhTWUrl,
     }
 
     const tasks = Object.entries(urls)
@@ -59,12 +71,16 @@ export const useMainStore = defineStore('main', () => {
           const data = JSON.parse(await $fetch(url!))
           const parseResult = jsumeSchema.safeParse(data)
           if (parseResult.success) {
-            if (lang === 'en')
-              jsumeEnData.value = parseResult.data
-            else if (lang === 'zhCHS')
-              jsumeZhCHSData.value = parseResult.data
-            else if (lang === 'zhCHT')
-              jsumeZhCHTData.value = parseResult.data
+            if (lang === 'enUS')
+              jsumeEnUSData.value = parseResult.data
+            else if (lang === 'jaJP')
+              jsumeJaJPData.value = parseResult.data
+            else if (lang === 'zhCN')
+              jsumeZhCNData.value = parseResult.data
+            else if (lang === 'zhHK')
+              jsumeZhHKData.value = parseResult.data
+            else if (lang === 'zhTW')
+              jsumeZhTWData.value = parseResult.data
           }
           else {
             console.error(parseResult.error)
@@ -82,9 +98,11 @@ export const useMainStore = defineStore('main', () => {
   return {
     // states
     jsumeData,
-    jsumeEnData,
-    jsumeZhCHSData,
-    jsumeZhCHTData,
+    jsumeEnData: jsumeEnUSData,
+    jsumeJaData: jsumeJaJPData,
+    jsumeZhCNData,
+    jsumeZhHKData,
+    jsumeZhTWData,
 
     // getters
     availableJsumeDataCount,

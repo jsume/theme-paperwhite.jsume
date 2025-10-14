@@ -1,0 +1,40 @@
+{
+  "common": {
+    "now": "現在",
+    "ongoing": "進行中",
+    "showMore": "もっと見る",
+    "showLess": "閉じる"
+  },
+  "jsume": {
+    "basics": {
+      "title": "基本情報"
+    },
+    "about": {
+      "title": "自己紹介"
+    },
+    "work": {
+      "title": "職務経歴"
+    },
+    "projects": {
+      "title": "プロジェクト"
+    },
+    "publications": {
+      "title": "出版物"
+    },
+    "education": {
+      "title": "学歴"
+    },
+    "certificates": {
+      "title": "資格"
+    },
+    "awards": {
+      "title": "受賞歴"
+    },
+    "skills": {
+      "title": "スキル"
+    },
+    "languages": {
+      "title": "言語"
+    }
+  }
+}
