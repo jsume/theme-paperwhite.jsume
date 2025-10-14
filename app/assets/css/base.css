@@ -9,6 +9,11 @@
   scroll-behavior: smooth;
 }
 
+:root::selection {
+  color: white;
+  background-color: black;
+}
+
 a {
   @apply transform cursor-pointer origin-bottom transition-all duration-400 ease-in-out sm:hover:scale-105;
 }
