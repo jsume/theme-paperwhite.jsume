@@ -63,6 +63,7 @@ export default defineNuxtConfig({
     },
     families: [
       { name: 'Raleway', provider: 'google' },
+      { name: 'Noto Sans JP', provider: 'google' },
       { name: 'Noto Sans SC', provider: 'google' },
       { name: 'Noto Sans ST', provider: 'google' },
     ],

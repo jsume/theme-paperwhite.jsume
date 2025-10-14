@@ -11,13 +11,17 @@ const stop = watchEffect(() => {
 const computedFontClass = computed(() => {
   let result = ''
   switch (locale.value) {
-    case 'en':
+    case 'en-US':
       result = 'font-raleway'
       break
-    case 'zh-CHS':
+    case 'ja-JP':
+      result = 'font-notoJP'
+      break
+    case 'zh-CN':
       result = 'font-notoSC'
       break
-    case 'zh-CHT':
+    case 'zh-HK':
+    case 'zh-TW':
       result = 'font-notoST'
       break
   }

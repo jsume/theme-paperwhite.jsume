@@ -14,8 +14,9 @@ export default defineConfig({
   theme: {
     font: {
       raleway: 'Raleway',
-      notoSC: 'Noto Sans SC',
-      notoTC: 'Noto Sans TC',
+      notoJP: 'Noto Sans JP, Raleway',
+      notoSC: 'Noto Sans SC, Raleway',
+      notoTC: 'Noto Sans TC, Raleway',
     },
   },
   presets: [
