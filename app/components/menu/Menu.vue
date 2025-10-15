@@ -4,7 +4,7 @@ const isHidden = ref(true)
 
 <template>
   <div
-    class="group flex shrink-0 flex-col gap-3"
+    class="group flex shrink-0 flex-col gap-3 right-10 top-10 fixed lt-sm:(right-5 top-5)"
     @mouseenter="isHidden = false"
     @mouseleave="isHidden = true"
   >
