@@ -15,10 +15,11 @@ const isHidden = ref(true)
       <Icon name="mdi:apps" />
     </button>
     <div
-      v-if="!isHidden"
+      v-show="!isHidden"
       class="p-1 rounded-4 bg-black flex flex-col gap-3 w-8 items-center justify-center"
     >
       <Fullscreen />
+      <Draw />
       <Zoom />
       <LangSelector />
     </div>

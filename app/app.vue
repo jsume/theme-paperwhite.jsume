@@ -34,5 +34,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <NuxtPage :class="computedFontClass" />
+  <OnKeyStroke>
+    <NuxtPage :class="computedFontClass" />
+  </OnKeyStroke>
 </template>

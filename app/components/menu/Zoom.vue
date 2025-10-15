@@ -24,6 +24,12 @@ function zoom(delta: -1 | 0 | 1) {
   htmlRef.value.style.fontSize = `${newFontSize}px`
 }
 
+// event bus
+const onKeyStroke = inject<(type: KeyStrokeEventType, cb: (data: any) => any) => void>('onKeyStroke')!
+onKeyStroke(KeyStrokeEventType.ZOOM, (data) => {
+  zoom(data)
+})
+
 onMounted(() => {
   htmlRef.value = document.querySelector('html')
 })
