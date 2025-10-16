@@ -13,7 +13,7 @@ const { data: reqData } = await useFetch<{ stargazers_count: number }>(`https://
 </script>
 
 <template>
-  <div>
+  <div class="group">
     <!-- header -->
     <div class="flex items-center justify-between">
       <div class="section-item-header-info">
@@ -34,9 +34,9 @@ const { data: reqData } = await useFetch<{ stargazers_count: number }>(`https://
       <a
         v-if="item.githubUrl && reqData?.stargazers_count"
         :href="item.githubUrl"
-        class="group icon-text"
+        class="icon-text"
       >
-        <Icon name="mdi:star" class="transition duration-400 ease-in-out group-hover:text-yellow-300" />
+        <Icon name="mdi:star" class="transition duration-400 ease-in-out group-hover:(text-yellow-300 animate-pulse)" />
         <span>{{ reqData.stargazers_count }}</span>
       </a>
     </div>
