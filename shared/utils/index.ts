@@ -3,7 +3,6 @@ import type {
   DateType,
   EndDateType,
 } from '@jsume/schemas'
-import process from 'node:process'
 import { githubUrlSchema } from '@jsume/schemas'
 
 export function capitalize(str: string): string {
@@ -18,10 +17,6 @@ export function generateGistUrl(
   if (!username || !gistId || !filename)
     return ''
   return `https://gist.githubusercontent.com/${username}/${gistId}/raw/${filename}`
-}
-
-export function getGistUrl(filename: string) {
-  return generateGistUrl(process.env.NUXT_PUBLIC_GIST_USERNAME, process.env.NUXT_PUBLIC_GIST_ID, filename)
 }
 
 export function locationToString(location: BasicsType['location']) {

@@ -1,5 +1,5 @@
 /* eslint-disable node/prefer-global/process */
-import { getGistUrl } from './shared/utils/'
+import { getGistUrl } from './server/utils/'
 
 export default defineNuxtConfig({
   modules: [
