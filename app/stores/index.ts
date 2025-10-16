@@ -10,6 +10,8 @@ export const useMainStore = defineStore('main', () => {
   const jsumeZhTWData = ref<Jsume>()
   const jsumeData = ref<Jsume>()
 
+  const drawingEnabled = ref(false)
+
   // getters
   const localeCodeToJsumeData = {
     'en-US': jsumeEnUSData,
@@ -103,6 +105,8 @@ export const useMainStore = defineStore('main', () => {
     jsumeZhCNData,
     jsumeZhHKData,
     jsumeZhTWData,
+
+    drawingEnabled,
 
     // getters
     availableJsumeDataCount,

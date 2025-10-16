@@ -2,7 +2,7 @@
 import { toRefs } from '@vueuse/core'
 import { useDrauu } from '@vueuse/integrations/useDrauu'
 
-const drawingEnabled = ref(false)
+const { drawingEnabled } = storeToRefs(useMainStore())
 const toggleDrawing = useToggle(drawingEnabled)
 
 const parentEl = useParentElement()
