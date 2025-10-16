@@ -2,10 +2,14 @@
 const { isFullscreen, isSupported, toggle } = useFullscreen()
 
 // event bus
-const onKeyStroke = inject<(type: KeyStrokeEventType, cb: (data: any) => any) => void>('onKeyStroke')!
-onKeyStroke(KeyStrokeEventType['FULLSCREEN:TOGGLE'], () => {
+const onKeyStroke = inject<(type: KeyStrokeEventType, cb: (data: any) => any) => (() => void)>('onKeyStroke')!
+const unsub = onKeyStroke(KeyStrokeEventType['FULLSCREEN:TOGGLE'], () => {
   if (isSupported)
     toggle()
+})
+
+onUnmounted(() => {
+  unsub && unsub()
 })
 </script>
 

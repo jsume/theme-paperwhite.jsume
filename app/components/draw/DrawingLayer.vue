@@ -22,23 +22,23 @@ const { clear, undo, redo, brush, canUndo, canRedo } = useDrauu(svg, {
 const { mode, color, size, arrowEnd } = toRefs(brush)
 
 // event bus
-const onKeyStroke = inject<(type: KeyStrokeEventType, cb: (data: any) => any) => void>('onKeyStroke')!
-onKeyStroke(KeyStrokeEventType['DRAW:TOGGLE'], () => {
+const onKeyStroke = inject<(type: KeyStrokeEventType, cb: (data: any) => any) => (() => void)>('onKeyStroke')!
+const unsubToggle = onKeyStroke(KeyStrokeEventType['DRAW:TOGGLE'], () => {
   toggleDrawing()
 })
-onKeyStroke(KeyStrokeEventType['DRAW:STOP'], () => {
+const unsubStop = onKeyStroke(KeyStrokeEventType['DRAW:STOP'], () => {
   drawingEnabled.value = false
 })
-onKeyStroke(KeyStrokeEventType['DRAW:CLEAR'], () => {
+const unsubClear = onKeyStroke(KeyStrokeEventType['DRAW:CLEAR'], () => {
   drawingEnabled.value && clear()
 })
-onKeyStroke(KeyStrokeEventType['DRAW:UNDO'], () => {
+const unsubUndo = onKeyStroke(KeyStrokeEventType['DRAW:UNDO'], () => {
   drawingEnabled.value && undo()
 })
-onKeyStroke(KeyStrokeEventType['DRAW:REDO'], () => {
+const unsubRedo = onKeyStroke(KeyStrokeEventType['DRAW:REDO'], () => {
   drawingEnabled.value && redo()
 })
-onKeyStroke(KeyStrokeEventType['DRAW:SET_MODE'], (m) => {
+const unsubSetMode = onKeyStroke(KeyStrokeEventType['DRAW:SET_MODE'], (m) => {
   if (m === 'arrow' && drawingEnabled.value) {
     mode!.value = 'line'
     arrowEnd!.value = true
@@ -51,17 +51,28 @@ onKeyStroke(KeyStrokeEventType['DRAW:SET_MODE'], (m) => {
     drawingEnabled.value && (mode!.value = m)
   }
 })
-onKeyStroke(KeyStrokeEventType['DRAW:SET_COLOR'], (i) => {
+const unsubSetColor = onKeyStroke(KeyStrokeEventType['DRAW:SET_COLOR'], (i) => {
   if (i >= 0 && i < colors.value.length && drawingEnabled.value)
     color!.value = colors.value[i]!
 })
-onKeyStroke(KeyStrokeEventType['DRAW:SET_SIZE'], (i) => {
+const unsubSetSize = onKeyStroke(KeyStrokeEventType['DRAW:SET_SIZE'], (i) => {
   if (i === 1) {
     size!.value = Math.min(size!.value + 1, 10)
   }
   else if (i === -1) {
     size!.value = Math.max(size!.value - 1, 1)
   }
+})
+
+onUnmounted(() => {
+  unsubToggle && unsubToggle()
+  unsubStop && unsubStop()
+  unsubClear && unsubClear()
+  unsubUndo && unsubUndo()
+  unsubRedo && unsubRedo()
+  unsubSetMode && unsubSetMode()
+  unsubSetColor && unsubSetColor()
+  unsubSetSize && unsubSetSize()
 })
 </script>
 

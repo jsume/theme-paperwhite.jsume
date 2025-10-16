@@ -99,7 +99,7 @@ const confList: KeyStrokeConfig[] = [
 const bus = useEventBus('keyboard-shortcuts')
 
 function onKeyStroke<T>(type: KeyStrokeEventType, cb: (data: T) => void) {
-  bus.on((t, data) => {
+  return bus.on((t, data) => {
     if (t === type) {
       cb(data)
     }

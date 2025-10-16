@@ -9,9 +9,13 @@ onClickOutside(menu, () => {
 })
 
 // event bus
-const onKeyStroke = inject<(type: KeyStrokeEventType, cb: (data: any) => any) => void>('onKeyStroke')!
-onKeyStroke(KeyStrokeEventType['MENU:TOGGLE'], () => {
+const onKeyStroke = inject<(type: KeyStrokeEventType, cb: (data: any) => any) => (() => void)>('onKeyStroke')!
+const unsub = onKeyStroke(KeyStrokeEventType['MENU:TOGGLE'], () => {
   toggle()
+})
+
+onUnmounted(() => {
+  unsub && unsub()
 })
 </script>
 
