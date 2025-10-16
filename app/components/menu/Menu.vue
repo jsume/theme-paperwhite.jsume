@@ -34,6 +34,9 @@ onClickOutside(menu, () => {
 
 <style>
 .menu-icon {
-  @apply color-white bg-neutral-400/30 rounded-3 size-6 flex flex-col items-center justify-center text-sm;
+  @apply color-white bg-neutral-700 rounded-3 size-6 flex flex-col items-center justify-center text-sm;
+}
+.menu-icon.active {
+  @apply bg-white text-black;
 }
 </style>

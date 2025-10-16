@@ -8,12 +8,12 @@ interface KeyStrokeConfig {
 
 const confList: KeyStrokeConfig[] = [
   {
-    condition: code => code === 'Escape' && drawingEnabled.value,
-    cb: emit => emit(KeyStrokeEventType['DRAW:STOP']),
+    condition: (code, { noModifier }) => code === 'KeyP' && noModifier,
+    cb: emit => emit(KeyStrokeEventType['DRAW:TOGGLE']),
   },
   {
-    condition: (code, { noModifier }) => code === 'KeyD' && noModifier,
-    cb: emit => emit(KeyStrokeEventType['DRAW:TOGGLE']),
+    condition: (code, { noModifier }) => code === 'Escape' && noModifier && drawingEnabled.value,
+    cb: emit => emit(KeyStrokeEventType['DRAW:STOP']),
   },
   {
     condition: (code, { noModifier }) => code === 'KeyC' && noModifier && drawingEnabled.value,
@@ -28,8 +28,8 @@ const confList: KeyStrokeConfig[] = [
     cb: emit => emit(KeyStrokeEventType['DRAW:SET_MODE'], 'arrow'),
   },
   {
-    condition: (code, { noModifier }) => code === 'KeyS' && noModifier && drawingEnabled.value,
-    cb: emit => emit(KeyStrokeEventType['DRAW:SET_MODE'], 'stylus'),
+    condition: (code, { noModifier }) => code === 'KeyD' && noModifier && drawingEnabled.value,
+    cb: emit => emit(KeyStrokeEventType['DRAW:SET_MODE'], 'draw'),
   },
   {
     condition: (code, { noModifier }) => code === 'KeyR' && noModifier && drawingEnabled.value,
@@ -40,8 +40,16 @@ const confList: KeyStrokeConfig[] = [
     cb: emit => emit(KeyStrokeEventType['DRAW:SET_MODE'], 'ellipse'),
   },
   {
-    condition: (code, { e }) => code === 'KeyE' && e.shiftKey && drawingEnabled.value,
+    condition: (code, { noModifier }) => code === 'KeyX' && noModifier && drawingEnabled.value,
     cb: emit => emit(KeyStrokeEventType['DRAW:SET_MODE'], 'eraseLine'),
+  },
+  {
+    condition: (code, { noModifier }) => code === 'Equal' && noModifier && drawingEnabled.value,
+    cb: emit => emit(KeyStrokeEventType['DRAW:SET_SIZE'], 1),
+  },
+  {
+    condition: (code, { noModifier }) => code === 'Minus' && noModifier && drawingEnabled.value,
+    cb: emit => emit(KeyStrokeEventType['DRAW:SET_SIZE'], -1),
   },
   {
     condition: (code, { noModifier }) => code === 'KeyZ'
