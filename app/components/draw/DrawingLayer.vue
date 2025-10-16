@@ -16,6 +16,7 @@ const { clear, undo, redo, brush, canUndo, canRedo } = useDrauu(svg, {
     color: 'black',
     mode: 'draw',
     size: 3,
+    arrowEnd: false,
   },
 })
 const { mode, color, size, arrowEnd } = toRefs(brush)
@@ -69,8 +70,8 @@ onKeyStroke(KeyStrokeEventType['DRAW:SET_SIZE'], (i) => {
     v-show="drawingEnabled"
     v-model:color="color"
     v-model:size="size"
-    v-model:mode="mode!"
-    v-model:arrow-end="arrowEnd!"
+    v-model:mode="mode"
+    v-model:arrow-end="arrowEnd"
     :colors="colors"
     :can-undo="canUndo"
     :can-redo="canRedo"

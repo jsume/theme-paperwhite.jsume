@@ -22,11 +22,9 @@ const size = defineModel<number>('size', {
 })
 const mode = defineModel<string>('mode', {
   type: String,
-  required: true,
 })
-const arrowEnd = defineModel<boolean>('arrowEnd', {
+const arrowEnd = defineModel<boolean>('arrow-end', {
   type: Boolean,
-  required: true,
 })
 
 const panel = useTemplateRef<HTMLDivElement>('panel')
