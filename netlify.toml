@@ -4,3 +4,6 @@ command = "pnpm run build"
 
 [build.environment]
 NODE_VERSION = "22"
+
+[[plugins]]
+package = "@netlify/plugin-lighthouse"
