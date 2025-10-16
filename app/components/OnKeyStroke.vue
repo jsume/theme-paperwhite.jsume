@@ -40,6 +40,10 @@ const confList: KeyStrokeConfig[] = [
     cb: emit => emit(KeyStrokeEventType['DRAW:SET_MODE'], 'ellipse'),
   },
   {
+    condition: (code, { e }) => code === 'KeyE' && e.shiftKey && drawingEnabled.value,
+    cb: emit => emit(KeyStrokeEventType['DRAW:SET_MODE'], 'eraseLine'),
+  },
+  {
     condition: (code, { noModifier }) => code === 'KeyZ'
       && (noModifier === false)
       && (window.navigator.platform.includes('Mac') ? (window.event as KeyboardEvent).metaKey : (window.event as KeyboardEvent).ctrlKey),
