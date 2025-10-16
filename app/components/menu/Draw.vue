@@ -1,6 +1,8 @@
 <script setup lang="ts">
-function handleClick() {
+const emitKeyStroke = inject<(type: KeyStrokeEventType, data?: any) => void>('emitKeyStroke')!
 
+function handleClick() {
+  emitKeyStroke(KeyStrokeEventType['DRAW:TOGGLE'])
 }
 </script>
 
