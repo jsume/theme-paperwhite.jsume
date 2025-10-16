@@ -7,3 +7,6 @@ NODE_VERSION = "22"
 
 [[plugins]]
 package = "@netlify/plugin-lighthouse"
+
+[plugins.inputs.settings]
+preset = "desktop" # Optionally run Lighthouse using a desktop configuration
