@@ -1,10 +1,17 @@
 <script setup lang="ts">
-const isHidden = ref(true)
+const { menuOpened } = storeToRefs(useMainStore())
+const toggle = useToggle(menuOpened)
 
 const menu = useTemplateRef<HTMLElement>('menu')
 
 onClickOutside(menu, () => {
-  isHidden.value = true
+  menuOpened.value = false
+})
+
+// event bus
+const onKeyStroke = inject<(type: KeyStrokeEventType, cb: (data: any) => any) => void>('onKeyStroke')!
+onKeyStroke(KeyStrokeEventType['MENU:TOGGLE'], () => {
+  toggle()
 })
 </script>
 
@@ -15,13 +22,13 @@ onClickOutside(menu, () => {
   >
     <button
       class="rounded-4 flex shrink-0 flex-col size-8 items-center justify-center"
-      :class="{ 'bg-black color-white': !isHidden }"
-      @click="isHidden = !isHidden"
+      :class="{ 'bg-black color-white': menuOpened }"
+      @click="toggle()"
     >
       <Icon name="mdi:apps" />
     </button>
     <div
-      v-show="!isHidden"
+      v-show="menuOpened"
       class="p-1 rounded-4 bg-black flex flex-col gap-3 w-8 items-center justify-center"
     >
       <Fullscreen />

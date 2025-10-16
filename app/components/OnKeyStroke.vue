@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const { drawingEnabled } = storeToRefs(useMainStore())
+const { drawingEnabled, menuOpened } = storeToRefs(useMainStore())
 
 interface KeyStrokeConfig {
   condition: (code: string, context: { e: KeyboardEvent, noModifier: boolean }) => boolean
@@ -69,6 +69,14 @@ const confList: KeyStrokeConfig[] = [
       const e = window.event as KeyboardEvent
       emit(KeyStrokeEventType['DRAW:SET_COLOR'], Number(e.code[5]) - 1)
     },
+  },
+  {
+    condition: (code, { noModifier }) => code === 'KeyM' && noModifier,
+    cb: emit => emit(KeyStrokeEventType['MENU:TOGGLE']),
+  },
+  {
+    condition: (code, { noModifier }) => code === 'Escape' && noModifier && menuOpened.value,
+    cb: emit => emit(KeyStrokeEventType['MENU:TOGGLE']),
   },
   {
     condition: (code, { noModifier }) => code === 'KeyF' && noModifier,

@@ -8,6 +8,8 @@ export enum KeyStrokeEventType {
   'DRAW:SET_MODE',
   'DRAW:SET_COLOR',
   'DRAW:SET_SIZE',
+  // menu
+  'MENU:TOGGLE',
   // full screen
   'FULLSCREEN:TOGGLE',
   // zoom
