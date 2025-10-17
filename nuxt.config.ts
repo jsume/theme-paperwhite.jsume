@@ -39,8 +39,6 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       // env
-      defaultLocale: '',
-      gistUsername: '',
       gistId: '',
       githubAccessToken: '',
     },

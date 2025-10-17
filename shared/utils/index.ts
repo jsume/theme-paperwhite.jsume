@@ -60,3 +60,23 @@ export function extractUserAndRepoFromARepoUrl(url?: string) {
   }
   return { user, repo }
 }
+
+export function safeParseJson<T>(jsonString: string) {
+  let result: { success: boolean, data: T | undefined }
+
+  try {
+    result = {
+      success: true,
+      data: JSON.parse(jsonString) as T,
+    }
+  }
+  // eslint-disable-next-line unused-imports/no-unused-vars
+  catch (err) {
+    result = {
+      success: false,
+      data: undefined,
+    }
+  }
+
+  return result
+}

@@ -5,7 +5,7 @@ export function useGithubRepoStars(githubRepoUrl?: string) {
 
   const { user, repo } = extractUserAndRepoFromARepoUrl(githubRepoUrl)
 
-  return useFetch<{ stargazers_count: number }>(`https://api.github.com/repos/${user}/${repo}`, {
+  return useFetch<{ stargazers_count: number }>(`${GITHUB_API_BASE_URL}/repos/${user}/${repo}`, {
     headers: {
       'X-GitHub-Api-Version': GITHUB_API_VERSION || '2022-11-28',
       'Authorization': hasGithubAccessToken ? `Bearer ${githubAccessToken}` : '',

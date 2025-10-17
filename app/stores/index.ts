@@ -14,13 +14,23 @@ export const useMainStore = defineStore('main', () => {
   const menuOpened = ref(false)
 
   // getters
-  const localeCodeToJsumeData: Record<LocaleCodeType, typeof jsumeData> = {
-    'en-US': jsumeEnUSData,
-    'ja-JP': jsumeJaJPData,
-    'zh-CN': jsumeZhCNData,
-    'zh-HK': jsumeZhHKData,
-    'zh-TW': jsumeZhTWData,
-  }
+  const localeCodeToJsumeData = LOCALE_CODES
+    .map((code) => {
+      switch (code) {
+        case 'ja-JP': return [code, jsumeJaJPData] as const
+        case 'zh-CN': return [code, jsumeZhCNData] as const
+        case 'zh-HK': return [code, jsumeZhHKData] as const
+        case 'zh-TW': return [code, jsumeZhTWData] as const
+      }
+      return ['en-US', jsumeEnUSData] as const
+    })
+    .reduce((acc, [code, data]) => {
+      return {
+        ...acc,
+        [code]: data,
+      } as const
+    }, {} as Record<LocaleCodeType, typeof jsumeData>)
+
   const availableJsumeDataCount = computed(() => Object.values(localeCodeToJsumeData).filter(d => d.value).length)
   const availableLocaleCodes = computed(() => Object.entries(localeCodeToJsumeData).filter(([_, d]) => d.value).map(([code, _]) => code))
 
@@ -42,38 +52,33 @@ export const useMainStore = defineStore('main', () => {
   }
 
   async function getJsumeData() {
-    const config = useRuntimeConfig()
-    const { gistUsername, gistId } = config.public
+    const {
+      gistId,
+      githubAccessToken,
+    } = useRuntimeConfig().public
 
-    const baseUrl = 'https://gist.githubusercontent.com'
+    const hasGithubAccessToken = !!githubAccessToken
 
-    const urls = (Object.keys(localeCodeToJsumeData) as LocaleCodeType[]).reduce((acc, code) => {
-      return {
-        ...acc,
-        [code]: `${baseUrl}/${gistUsername}/${gistId}/raw/${code}.jsume.json`,
+    const url = `${GITHUB_API_BASE_URL}/gists/${gistId}`
+    const resp: any = await $fetch(url, {
+      headers: {
+        'X-GitHub-Api-Version': GITHUB_API_VERSION || '2022-11-28',
+        'Authorization': hasGithubAccessToken ? `Bearer ${githubAccessToken}` : '',
+      },
+    })
+    const files = resp.files
+
+    Object.keys(localeCodeToJsumeData).forEach((code) => {
+      if (files[`${code}.jsume.json`]) {
+        const jsonParseResult = safeParseJson<any>(files[`${code}.jsume.json`].content)
+        if (jsonParseResult.success) {
+          const schemaParseResult = jsumeSchema.safeParse(jsonParseResult.data)
+          if (schemaParseResult.success) {
+            localeCodeToJsumeData[code as LocaleCodeType].value = schemaParseResult.data
+          }
+        }
       }
-    }, {} as Record<LocaleCodeType, string>)
-
-    const tasks = Object.entries(urls)
-      .filter(([_, url]) => !!url)
-      .map(async ([code, url]) => {
-        try {
-          const data = JSON.parse(await $fetch(url!))
-          const parseResult = jsumeSchema.safeParse(data)
-          if (parseResult.success) {
-            localeCodeToJsumeData[code as LocaleCodeType].value = parseResult.data
-          }
-          else {
-            console.error(parseResult.error)
-          }
-        }
-        // eslint-disable-next-line unused-imports/no-unused-vars
-        catch (e) {
-          // console.error(`Failed to fetch ${code} data`, e)
-        }
-      })
-
-    await Promise.allSettled(tasks) // 并行执行
+    })
   }
 
   return {

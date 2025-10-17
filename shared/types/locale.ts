@@ -1,6 +1,3 @@
-export type LocaleCodeType
-  = 'en-US'
-    | 'ja-JP'
-    | 'zh-CN'
-    | 'zh-HK'
-    | 'zh-TW'
+import type { LOCALE_CODES } from '../utils/constants'
+
+export type LocaleCodeType = typeof LOCALE_CODES[number]
