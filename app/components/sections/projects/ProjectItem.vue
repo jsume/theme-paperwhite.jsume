@@ -5,11 +5,7 @@ const props = defineProps<{
   item: ProjectsType[number]
 }>()
 
-const { user, repo } = extractUserAndRepoFromARepoUrl(props.item.githubUrl)
-
-const { data: reqData } = await useFetch<{ stargazers_count: number }>(`https://api.github.com/repos/${user}/${repo}`, {
-  pick: ['stargazers_count'],
-})
+const { data: reqData } = (await useGithubRepoStars(props.item.githubUrl)) || {}
 </script>
 
 <template>

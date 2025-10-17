@@ -1,6 +1,4 @@
 /* eslint-disable node/prefer-global/process */
-import { getGistUrl } from './server/utils/'
-
 export default defineNuxtConfig({
   modules: [
     '@nuxt/eslint',
@@ -40,12 +38,11 @@ export default defineNuxtConfig({
   ],
   runtimeConfig: {
     public: {
-      // list of jsume data gist urls for nuxt runtime ctx
-      jsumeDataEnUSUrl: getGistUrl('en-US.jsume.json'),
-      jsumeDataJaJPUrl: getGistUrl('ja-JP.jsume.json'),
-      jsumeDataZhCNUrl: getGistUrl('zh-CN.jsume.json'),
-      jsumeDataZhHKUrl: getGistUrl('zh-HK.jsume.json'),
-      jsumeDataZhTWUrl: getGistUrl('zh-TW.jsume.json'),
+      // env
+      defaultLocale: '',
+      gistUsername: '',
+      gistId: '',
+      githubAccessToken: '',
     },
   },
   compatibilityDate: '2025-07-15',

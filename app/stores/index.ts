@@ -14,7 +14,7 @@ export const useMainStore = defineStore('main', () => {
   const menuOpened = ref(false)
 
   // getters
-  const localeCodeToJsumeData = {
+  const localeCodeToJsumeData: Record<LocaleCodeType, typeof jsumeData> = {
     'en-US': jsumeEnUSData,
     'ja-JP': jsumeJaJPData,
     'zh-CN': jsumeZhCNData,
@@ -36,54 +36,32 @@ export const useMainStore = defineStore('main', () => {
 
   // actions
   function setJsumeDataByLocale(localeCode: LocaleCodeType) {
-    switch (localeCode) {
-      case 'en-US':
-        jsumeData.value = jsumeEnUSData.value
-        break
-      case 'ja-JP':
-        jsumeData.value = jsumeJaJPData.value
-        break
-      case 'zh-CN':
-        jsumeData.value = jsumeZhCNData.value
-        break
-      case 'zh-HK':
-        jsumeData.value = jsumeZhHKData.value
-        break
-      case 'zh-TW':
-        jsumeData.value = jsumeZhTWData.value
-        break
-      default:
-        break
+    if (localeCodeToJsumeData[localeCode]) {
+      jsumeData.value = localeCodeToJsumeData[localeCode].value
     }
   }
 
   async function getJsumeData() {
     const config = useRuntimeConfig()
-    const urls = {
-      enUS: config.public.jsumeDataEnUSUrl,
-      jaJP: config.public.jsumeDataJaJPUrl,
-      zhCN: config.public.jsumeDataZhCNUrl,
-      zhHK: config.public.jsumeDataZhHKUrl,
-      zhTW: config.public.jsumeDataZhTWUrl,
-    }
+    const { gistUsername, gistId } = config.public
+
+    const baseUrl = 'https://gist.githubusercontent.com'
+
+    const urls = (Object.keys(localeCodeToJsumeData) as LocaleCodeType[]).reduce((acc, code) => {
+      return {
+        ...acc,
+        [code]: `${baseUrl}/${gistUsername}/${gistId}/raw/${code}.jsume.json`,
+      }
+    }, {} as Record<LocaleCodeType, string>)
 
     const tasks = Object.entries(urls)
       .filter(([_, url]) => !!url)
-      .map(async ([lang, url]) => {
+      .map(async ([code, url]) => {
         try {
           const data = JSON.parse(await $fetch(url!))
           const parseResult = jsumeSchema.safeParse(data)
           if (parseResult.success) {
-            if (lang === 'enUS')
-              jsumeEnUSData.value = parseResult.data
-            else if (lang === 'jaJP')
-              jsumeJaJPData.value = parseResult.data
-            else if (lang === 'zhCN')
-              jsumeZhCNData.value = parseResult.data
-            else if (lang === 'zhHK')
-              jsumeZhHKData.value = parseResult.data
-            else if (lang === 'zhTW')
-              jsumeZhTWData.value = parseResult.data
+            localeCodeToJsumeData[code as LocaleCodeType].value = parseResult.data
           }
           else {
             console.error(parseResult.error)
@@ -91,7 +69,7 @@ export const useMainStore = defineStore('main', () => {
         }
         // eslint-disable-next-line unused-imports/no-unused-vars
         catch (e) {
-          // console.error(`Failed to fetch ${lang} data`, e)
+          // console.error(`Failed to fetch ${code} data`, e)
         }
       })
 

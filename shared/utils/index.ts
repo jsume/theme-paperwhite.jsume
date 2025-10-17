@@ -9,16 +9,6 @@ export function capitalize(str: string): string {
   return str.charAt(0).toUpperCase() + str.slice(1)
 }
 
-export function generateGistUrl(
-  username?: string,
-  gistId?: string,
-  filename?: string,
-) {
-  if (!username || !gistId || !filename)
-    return ''
-  return `https://gist.githubusercontent.com/${username}/${gistId}/raw/${filename}`
-}
-
 export function locationToString(location: BasicsType['location']) {
   if (!location)
     return undefined
