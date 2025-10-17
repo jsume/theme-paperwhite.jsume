@@ -46,6 +46,9 @@ const { style } = useDraggable(panel, {
     <button :class="{ active: mode === 'draw' }" class="tool-button" @click="mode = 'draw'">
       <Icon name="material-symbols:edit-outline" />
     </button>
+    <button :class="{ active: mode === 'stylus' }" class="tool-button" @click="mode = 'stylus'">
+      <Icon name="material-symbols:stylus-laser-pointer" />
+    </button>
     <button :class="{ active: mode === 'line' && !arrowEnd }" class="tool-button" @click="mode = 'line';arrowEnd = false">
       <Icon name="mdi:slash-forward" />
     </button>

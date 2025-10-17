@@ -32,6 +32,10 @@ const confList: KeyStrokeConfig[] = [
     cb: emit => emit(KeyStrokeEventType['DRAW:SET_MODE'], 'draw'),
   },
   {
+    condition: (code, { noModifier }) => code === 'KeyS' && noModifier && drawingEnabled.value,
+    cb: emit => emit(KeyStrokeEventType['DRAW:SET_MODE'], 'stylus'),
+  },
+  {
     condition: (code, { noModifier }) => code === 'KeyR' && noModifier && drawingEnabled.value,
     cb: emit => emit(KeyStrokeEventType['DRAW:SET_MODE'], 'rectangle'),
   },
