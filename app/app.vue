@@ -11,9 +11,6 @@ const stop = watchEffect(() => {
 const computedFontClass = computed(() => {
   let result = ''
   switch (locale.value) {
-    case 'en-US':
-      result = 'font-raleway'
-      break
     case 'ja-JP':
       result = 'font-notoJP'
       break
@@ -23,6 +20,9 @@ const computedFontClass = computed(() => {
     case 'zh-HK':
     case 'zh-TW':
       result = 'font-notoST'
+      break
+    default:
+      result = 'font-raleway'
       break
   }
   return result

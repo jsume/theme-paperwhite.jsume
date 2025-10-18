@@ -1,0 +1,40 @@
+{
+  "common": {
+    "now": "현재",
+    "ongoing": "진행 중",
+    "showMore": "더 보기",
+    "showLess": "간략히 보기"
+  },
+  "jsume": {
+    "basics": {
+      "title": "기본 정보"
+    },
+    "about": {
+      "title": "소개"
+    },
+    "work": {
+      "title": "경력"
+    },
+    "projects": {
+      "title": "프로젝트"
+    },
+    "publications": {
+      "title": "출판물"
+    },
+    "education": {
+      "title": "학력"
+    },
+    "certificates": {
+      "title": "자격증"
+    },
+    "awards": {
+      "title": "수상 내역"
+    },
+    "skills": {
+      "title": "기술"
+    },
+    "languages": {
+      "title": "언어"
+    }
+  }
+}

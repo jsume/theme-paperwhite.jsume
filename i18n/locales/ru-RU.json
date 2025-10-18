@@ -1,0 +1,40 @@
+{
+  "common": {
+    "now": "Сейчас",
+    "ongoing": "В процессе",
+    "showMore": "показать больше",
+    "showLess": "показать меньше"
+  },
+  "jsume": {
+    "basics": {
+      "title": "Основная информация"
+    },
+    "about": {
+      "title": "Обо мне"
+    },
+    "work": {
+      "title": "Опыт работы"
+    },
+    "projects": {
+      "title": "Проекты"
+    },
+    "publications": {
+      "title": "Публикации"
+    },
+    "education": {
+      "title": "Образование"
+    },
+    "certificates": {
+      "title": "Сертификаты"
+    },
+    "awards": {
+      "title": "Награды"
+    },
+    "skills": {
+      "title": "Навыки"
+    },
+    "languages": {
+      "title": "Языки"
+    }
+  }
+}

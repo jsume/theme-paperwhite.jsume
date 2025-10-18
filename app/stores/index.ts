@@ -13,11 +13,9 @@ export const useMainStore = defineStore('main', () => {
     .reduce((acc, code) => {
       return reactive({
         ...acc,
-        [code]: {},
-      } as const)
+        [code]: undefined,
+      })
     }, reactive({} as Record<LocaleCodeType, typeof jsumeData>))
-
-  // console.log('localeCodeToJsumeData', localeCodeToJsumeData)
 
   const availableJsumeDataCount = computed(() => Object.values(localeCodeToJsumeData).filter(d => d).length)
   const availableLocaleCodes = computed(() => Object.entries(localeCodeToJsumeData).filter(([_, d]) => d).map(([code, _]) => code))

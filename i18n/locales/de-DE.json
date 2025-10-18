@@ -1,0 +1,40 @@
+{
+  "common": {
+    "now": "Jetzt",
+    "ongoing": "Laufend",
+    "showMore": "mehr anzeigen",
+    "showLess": "weniger anzeigen"
+  },
+  "jsume": {
+    "basics": {
+      "title": "Grundinformationen"
+    },
+    "about": {
+      "title": "Über mich"
+    },
+    "work": {
+      "title": "Berufserfahrung"
+    },
+    "projects": {
+      "title": "Projekte"
+    },
+    "publications": {
+      "title": "Veröffentlichungen"
+    },
+    "education": {
+      "title": "Ausbildung"
+    },
+    "certificates": {
+      "title": "Zertifikate"
+    },
+    "awards": {
+      "title": "Auszeichnungen"
+    },
+    "skills": {
+      "title": "Fähigkeiten"
+    },
+    "languages": {
+      "title": "Sprachen"
+    }
+  }
+}
