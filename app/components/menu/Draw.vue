@@ -9,6 +9,7 @@ function handleClick() {
 
 <template>
   <button
+    title="Toggle drawing mode"
     class="menu-icon"
     :class="{ active: drawingEnabled }"
     @click="handleClick()"

@@ -14,7 +14,7 @@ const availableLocales = computed(() => locales.value.filter(lc => availableLoca
     v-if="availableJsumeDataCount > 1"
     class="relative"
   >
-    <button class="menu-icon" @click="handleClick">
+    <button title="Language selector" class="menu-icon" @click="handleClick">
       <Icon name="material-symbols:translate" />
     </button>
     <select

@@ -14,7 +14,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <button v-show="isSupported" class="menu-icon" @click="toggle">
+  <button v-show="isSupported" title="Toggle fullscreen" class="menu-icon" @click="toggle">
     <Icon v-show="isFullscreen" name="material-symbols:fullscreen-exit-rounded" />
     <Icon v-show="!isFullscreen" name="material-symbols:fullscreen-rounded" />
   </button>

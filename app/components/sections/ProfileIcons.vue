@@ -47,7 +47,7 @@ const iconName = computed(() => {
 </script>
 
 <template>
-  <a :href="profile.url">
+  <a :href="profile.url" :aria-label="profile.network">
     <Icon :name="iconName" />
   </a>
 </template>

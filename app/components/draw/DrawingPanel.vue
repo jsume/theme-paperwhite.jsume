@@ -43,25 +43,25 @@ const { style } = useDraggable(panel, {
     :style="style"
   >
     <!-- mode -->
-    <button :class="{ active: mode === 'draw' }" class="tool-button" @click="mode = 'draw'">
+    <button title="Draw" :class="{ active: mode === 'draw' }" class="tool-button" @click="mode = 'draw'">
       <Icon name="material-symbols:edit-outline" />
     </button>
-    <button :class="{ active: mode === 'stylus' }" class="tool-button" @click="mode = 'stylus'">
+    <button title="Stylus" :class="{ active: mode === 'stylus' }" class="tool-button" @click="mode = 'stylus'">
       <Icon name="material-symbols:stylus-laser-pointer" />
     </button>
-    <button :class="{ active: mode === 'line' && !arrowEnd }" class="tool-button" @click="mode = 'line';arrowEnd = false">
+    <button title="Line" :class="{ active: mode === 'line' && !arrowEnd }" class="tool-button" @click="mode = 'line';arrowEnd = false">
       <Icon name="mdi:slash-forward" />
     </button>
-    <button :class="{ active: mode === 'line' && arrowEnd }" class="tool-button" @click="mode = 'line';arrowEnd = true">
+    <button title="Arrow" :class="{ active: mode === 'line' && arrowEnd }" class="tool-button" @click="mode = 'line';arrowEnd = true">
       <Icon name="material-symbols:line-end-arrow-notch" />
     </button>
-    <button :class="{ active: mode === 'rectangle' }" class="tool-button" @click="mode = 'rectangle'">
+    <button title="Rectangle" :class="{ active: mode === 'rectangle' }" class="tool-button" @click="mode = 'rectangle'">
       <Icon name="material-symbols:square-outline" />
     </button>
-    <button :class="{ active: mode === 'ellipse' }" class="tool-button" @click="mode = 'ellipse'">
+    <button title="Ellipse" :class="{ active: mode === 'ellipse' }" class="tool-button" @click="mode = 'ellipse'">
       <Icon name="mdi:circle-outline" />
     </button>
-    <button :class="{ active: mode === 'eraseLine' }" class="tool-button" @click="mode = 'eraseLine'">
+    <button title="Erase" :class="{ active: mode === 'eraseLine' }" class="tool-button" @click="mode = 'eraseLine'">
       <Icon name="material-symbols:ink-eraser-outline" />
     </button>
     <!-- separator -->
@@ -72,6 +72,7 @@ const { style } = useDraggable(panel, {
     <button
       v-for="_color in colors"
       :key="_color"
+      :title="`Color ${_color}`"
       :class="{ active: _color === color }"
       class="color-button"
       @click="() => color = _color"
@@ -81,19 +82,20 @@ const { style } = useDraggable(panel, {
     <!-- separator -->
     <div class="separator" />
     <!-- ops -->
-    <button class="tool-button" :disabled="!canUndo" @click="emit('undo')">
+    <button title="Undo" class="tool-button" :disabled="!canUndo" @click="emit('undo')">
       <Icon name="material-symbols:undo" />
     </button>
-    <button class="tool-button" :disabled="!canRedo" @click="emit('redo')">
+    <button title="Redo" class="tool-button" :disabled="!canRedo" @click="emit('redo')">
       <Icon name="material-symbols:redo" />
     </button>
-    <button class="tool-button" @click="emit('clear')">
+    <button title="Clear" class="tool-button" @click="emit('clear')">
       <Icon name="material-symbols:delete-outline-rounded" />
     </button>
     <!-- separator -->
     <div class="separator" />
     <!-- close -->
     <button
+      title="Close"
       class="tool-button"
       @click="emit('close')"
     >

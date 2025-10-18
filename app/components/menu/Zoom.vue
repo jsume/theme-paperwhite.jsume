@@ -41,9 +41,15 @@ onUnmounted(() => {
 
 <template>
   <div class="menu-icon">
-    <Icon class="cursor-pointer" name="mdi:plus" @click="() => zoom(1)" />
-    <Icon class="cursor-pointer" name="mdi:refresh" @click="() => zoom(0)" />
-    <Icon class="cursor-pointer" name="mdi:minus" @click="() => zoom(-1)" />
+    <button title="Zoom in" @click="() => zoom(1)">
+      <Icon name="mdi:plus" />
+    </button>
+    <button title="Reset zoom" @click="() => zoom(0)">
+      <Icon name="mdi:refresh" />
+    </button>
+    <button title="Zoom out" @click="() => zoom(-1)">
+      <Icon name="mdi:minus" />
+    </button>
   </div>
 </template>
 

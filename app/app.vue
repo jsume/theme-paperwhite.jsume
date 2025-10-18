@@ -28,6 +28,12 @@ const computedFontClass = computed(() => {
   return result
 })
 
+useHead({
+  htmlAttrs: {
+    lang: computed(() => locale.value),
+  },
+})
+
 onUnmounted(() => {
   stop()
 })

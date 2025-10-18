@@ -17,11 +17,11 @@ const { data: reqData } = (await useGithubRepoStars(props.item.githubUrl)) || {}
           <!-- project name -->
           <span class="font-bold">{{ item.name }}</span>
           <!-- project website -->
-          <a v-if="item.website" :href="item.website" class="flex items-center">
+          <a v-if="item.website" :href="item.website" class="flex items-center" aria-label="Project website">
             <Icon name="mdi:web" />
           </a>
           <!-- project github repo -->
-          <a v-if="item.githubUrl" :href="item.githubUrl" class="flex items-center">
+          <a v-if="item.githubUrl" :href="item.githubUrl" class="flex items-center" aria-label="GitHub repository">
             <Icon name="mdi:github" />
           </a>
         </div>
@@ -31,6 +31,7 @@ const { data: reqData } = (await useGithubRepoStars(props.item.githubUrl)) || {}
         v-if="item.githubUrl && reqData?.stargazers_count"
         :href="item.githubUrl"
         class="icon-text"
+        aria-label="GitHub stars"
       >
         <Icon name="mdi:star" class="transition duration-400 ease-in-out group-hover:(text-yellow-300 animate-pulse)" />
         <span>{{ reqData.stargazers_count }}</span>

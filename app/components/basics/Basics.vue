@@ -23,6 +23,7 @@ onUpdated(() => {
         :src="basics?.image"
         alt="avatar"
         class="border-transparent rounded-xl max-w-40 w-1/2 aspect-square"
+        object="cover center"
         @load="() => { showImage = true }"
       >
     </ClientOnly>
@@ -43,17 +44,17 @@ onUpdated(() => {
     <!-- email, phone, url, location -->
     <div class="text-sm flex flex-col flex-wrap gap-1 lt-sm:(flex-row gap-x-4 justify-center)">
       <!-- email -->
-      <a v-if="basics?.email" :href="`mailto:${basics?.email}`" class="icon-text">
+      <a v-if="basics?.email" :href="`mailto:${basics?.email}`" class="icon-text" aria-label="Email">
         <Icon name="material-symbols:mail-rounded" />
         <span class="whitespace-nowrap">{{ basics?.email }}</span>
       </a>
       <!-- phone -->
-      <a v-if="basics?.phone" :href="`tel:${basics?.phone}`" class="icon-text">
+      <a v-if="basics?.phone" :href="`tel:${basics?.phone}`" class="icon-text" aria-label="Phone number">
         <Icon name="material-symbols:phone-enabled" />
         <span class="whitespace-nowrap">{{ basics?.phone }}</span>
       </a>
       <!-- url -->
-      <a v-if="basics?.url" :href="basics?.url" class="icon-text">
+      <a v-if="basics?.url" :href="basics?.url" class="icon-text" aria-label="URL to personal website">
         <Icon name="material-symbols:account-circle" />
         <span class="whitespace-nowrap">{{ basics?.url }}</span>
       </a>

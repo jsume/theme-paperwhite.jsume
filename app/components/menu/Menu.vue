@@ -25,6 +25,7 @@ onUnmounted(() => {
     class="flex shrink-0 flex-col gap-3 right-10 top-10 fixed z-20 lt-sm:(right-5 top-5)"
   >
     <button
+      title="Menu"
       class="rounded-4 flex shrink-0 flex-col size-8 items-center justify-center"
       :class="{ 'bg-black color-white': menuOpened }"
       @click="toggle()"
