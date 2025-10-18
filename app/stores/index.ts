@@ -3,11 +3,6 @@ import { jsumeSchema } from '@jsume/schemas'
 
 export const useMainStore = defineStore('main', () => {
   // states
-  const jsumeEnUSData = ref<Jsume>()
-  const jsumeJaJPData = ref<Jsume>()
-  const jsumeZhCNData = ref<Jsume>()
-  const jsumeZhHKData = ref<Jsume>()
-  const jsumeZhTWData = ref<Jsume>()
   const jsumeData = ref<Jsume>()
 
   const drawingEnabled = ref(false)
@@ -15,24 +10,17 @@ export const useMainStore = defineStore('main', () => {
 
   // getters
   const localeCodeToJsumeData = LOCALE_CODES
-    .map((code) => {
-      switch (code) {
-        case 'ja-JP': return [code, jsumeJaJPData] as const
-        case 'zh-CN': return [code, jsumeZhCNData] as const
-        case 'zh-HK': return [code, jsumeZhHKData] as const
-        case 'zh-TW': return [code, jsumeZhTWData] as const
-      }
-      return ['en-US', jsumeEnUSData] as const
-    })
-    .reduce((acc, [code, data]) => {
-      return {
+    .reduce((acc, code) => {
+      return reactive({
         ...acc,
-        [code]: data,
-      } as const
-    }, {} as Record<LocaleCodeType, typeof jsumeData>)
+        [code]: {},
+      } as const)
+    }, reactive({} as Record<LocaleCodeType, typeof jsumeData>))
 
-  const availableJsumeDataCount = computed(() => Object.values(localeCodeToJsumeData).filter(d => d.value).length)
-  const availableLocaleCodes = computed(() => Object.entries(localeCodeToJsumeData).filter(([_, d]) => d.value).map(([code, _]) => code))
+  // console.log('localeCodeToJsumeData', localeCodeToJsumeData)
+
+  const availableJsumeDataCount = computed(() => Object.values(localeCodeToJsumeData).filter(d => d).length)
+  const availableLocaleCodes = computed(() => Object.entries(localeCodeToJsumeData).filter(([_, d]) => d).map(([code, _]) => code))
 
   const basics = computed(() => jsumeData.value?.basics)
   const work = computed(() => jsumeData.value?.work)
@@ -47,7 +35,7 @@ export const useMainStore = defineStore('main', () => {
   // actions
   function setJsumeDataByLocale(localeCode: LocaleCodeType) {
     if (localeCodeToJsumeData[localeCode]) {
-      jsumeData.value = localeCodeToJsumeData[localeCode].value
+      jsumeData.value = localeCodeToJsumeData[localeCode]
     }
   }
 
@@ -62,7 +50,7 @@ export const useMainStore = defineStore('main', () => {
     const url = `${GITHUB_API_BASE_URL}/gists/${gistId}`
     const resp: any = await $fetch(url, {
       headers: {
-        'X-GitHub-Api-Version': GITHUB_API_VERSION || '2022-11-28',
+        'X-GitHub-Api-Version': GITHUB_API_VERSION,
         'Authorization': hasGithubAccessToken ? `Bearer ${githubAccessToken}` : '',
       },
     })
@@ -74,7 +62,7 @@ export const useMainStore = defineStore('main', () => {
         if (jsonParseResult.success) {
           const schemaParseResult = jsumeSchema.safeParse(jsonParseResult.data)
           if (schemaParseResult.success) {
-            localeCodeToJsumeData[code as LocaleCodeType].value = schemaParseResult.data
+            localeCodeToJsumeData[code as LocaleCodeType] = schemaParseResult.data
           }
         }
       }
@@ -84,11 +72,7 @@ export const useMainStore = defineStore('main', () => {
   return {
     // states
     jsumeData,
-    jsumeEnData: jsumeEnUSData,
-    jsumeJaData: jsumeJaJPData,
-    jsumeZhCNData,
-    jsumeZhHKData,
-    jsumeZhTWData,
+    localeCodeToJsumeData,
 
     drawingEnabled,
     menuOpened,
