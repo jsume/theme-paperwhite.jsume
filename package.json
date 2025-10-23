@@ -3,6 +3,22 @@
   "type": "module",
   "private": true,
   "packageManager": "pnpm@10.18.3",
+  "description": "A simple and aesthetically pleasing jsume theme in black and white color scheme",
+  "author": "Moozon <muzhenweizh@gmail.com>",
+  "license": "MIT",
+  "homepage": "https://github.com/jsume/theme-paperwhite.jsume/#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+github.com/jsume/theme-paperwhite.jsume.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jsume/theme-paperwhite.jsume/issues"
+  },
+  "keywords": [
+    "jsume",
+    "resume",
+    "theme"
+  ],
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",
