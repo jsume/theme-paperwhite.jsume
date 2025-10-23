@@ -62,6 +62,12 @@ export const useMainStore = defineStore('main', () => {
           if (schemaParseResult.success) {
             localeCodeToJsumeData[code as LocaleCodeType] = schemaParseResult.data
           }
+          else {
+            throw createError(`Failed to validate JSUME JSON data for locale code: ${code}`)
+          }
+        }
+        else {
+          throw createError('Failed to parse JSUME JSON data.')
         }
       }
     })
