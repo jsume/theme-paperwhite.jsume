@@ -14,4 +14,5 @@ preset = "desktop" # Optionally run Lighthouse using a desktop configuration
 [template.environment]
 NUXT_PUBLIC_DEFAULT_LOCALE = 'Default Locale'
 NUXT_PUBLIC_GIST_ID = "Gist ID"
+NUXT_PUBLIC_GITHUB_ACCESS_TOKEN = "GitHub Access Token"
 SERVER_PRESET = "Server Preset (netlify_edge)"
