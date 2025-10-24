@@ -118,10 +118,16 @@ There are several environment variables you need to set for the application to w
 | :-- | :-- | :-- |
 | `NUXT_PUBLIC_DEFAULT_LOCALE` | Default display language | `en-US` |
 | `NUXT_PUBLIC_GIST_ID` | ID of your Gist storing Jsume JSON files | `787bff4db91d283c50ee9c691698561b` |
+| `NUXT_PUBLIC_GITHUB_ACCESS_TOKEN` | Github Personal Access Token (**optional**, for private Gists or higher rate limits) |  |
 | `SERVER_PRESET` | Build target for Nuxt | `netlify_edge`,  `vercel_edge`, ... |
 
 > [!IMPORTANT]
 > `SERVER_PRESET` sets the building preset for Nuxt. For example, if you are [deploying to Netlify](https://nuxt.com/deploy/netlify#netlify-edge-functions), set it to `netlify_edge`. It's equivalent to running `nuxt build --preset=netlify_edge` command.
+
+You can use with or without GitHub access token. However, to access private gists, you need to provide a GitHub access token. It is recommended to provide it, because authenticated requests have a [higher rate limit](https://docs.github.com/en/rest/using-the-rest-api/rate-limits-for-the-rest-api).
+
+> [!NOTE]
+> Check out GitHub's documentation on "[Creating a fine-grained personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-fine-grained-personal-access-token)"
 
 ## Credits
 
