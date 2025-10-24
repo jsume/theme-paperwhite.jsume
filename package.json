@@ -2,7 +2,7 @@
   "name": "theme-paperwhite.jsume",
   "type": "module",
   "private": true,
-  "packageManager": "pnpm@10.18.3",
+  "packageManager": "pnpm@10.19.0",
   "description": "A clean and elegant Jsume theme featuring a minimal black-and-white color scheme.",
   "author": "Moozon <muzhenweizh@gmail.com>",
   "license": "MIT",
